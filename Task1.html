@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task1</title>
+</head>
+<body>
+<script>
+    const car = {
+        manufacture: "ZAZ",
+        model: "Zaporogec",
+        year: "2000",
+        speed: 90,
+        print(data) {
+            document.writeln("" + data);
+        },
+        toString() {
+            return "{manufacture = " + this.manufacture + "," +
+                "model = " + this.model + ", " +
+                "year = " + this.year + ", " +
+                "speed = " + this.speed + "}"
+        },
+        calc(way) {
+            let time = way / this.speed;
+            time += Math.round(time / 4);
+            return time;
+        }
+    }
+
+    car.print(car.toString());
+    car.print(car.calc(900));
+
+</script>
+</body>
+</html>

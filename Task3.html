@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task3</title>
+</head>
+<body>
+<script>
+    class Time {
+        constructor(hours, minutes, seconds) {
+            this.hours = hours;
+            this.minutes = minutes;
+            this.seconds = seconds;
+        }
+        update() {
+            let sec = (this.hours * 3600) + (this.minutes * 60) + this.seconds;
+            this.hours = (Math.floor(sec / 3600)) % 24;
+            this.minutes = Math.floor((sec % 3600) / 60);
+            this.seconds = sec % 60;
+        }
+        addSec(sec) {
+            this.seconds += sec;
+            this.update();
+        }
+        addMin(min) {
+            this.minutes += min;
+            this.update();
+        }
+        addHours(hours) {
+            this.hours += hours;
+            this.update();
+        }
+        print(data) {
+            console.log("" + data);
+        }
+        twoDigit(val) {
+            if (val === 0) return "00";
+            if (val < 10) {
+                return ("" + 0 + val);
+            } else {
+                return val;
+            }
+        }
+        toString(){
+            this.print(this.twoDigit(this.hours) + ":" +
+                        this.twoDigit(this.minutes) + ":" +
+                        this.twoDigit(this.seconds));
+        }
+    }
+    const myTime = new Time(1, 23, 45);
+    // myTime.toString();
+    // myTime.addSec(30);
+    // myTime.toString();
+    // myTime.addMin(70);
+    // myTime.toString();
+    // myTime.addHours(22);
+    // myTime.toString();
+
+</script>
+</body>
+</html>

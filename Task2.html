@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task2</title>
+</head>
+<body>
+<script>
+    class Fraction {
+        constructor(numerator, denominator) {
+            this.numerator = numerator;
+            this.denominator = denominator;
+        }
+
+        print(data) {
+            console.log("" + data);
+        }
+
+        toString() {
+            this.print("{numerator = " + this.numerator + ", " +
+                "denominator = " + this.denominator + "}");
+        }
+
+        add(fraction_1, fraction_2) {
+            if (fraction_1 !== fraction_2) {
+                let comDenominator = fraction_1.denominator * fraction_2.denominator;
+                fraction_1.numerator *= fraction_2.denominator;
+                fraction_2.numerator *= fraction_1.denominator;
+                fraction_1.denominator = comDenominator;
+                fraction_2.denominator = comDenominator;
+            }
+            fraction_1.numerator += fraction_2.numerator;
+            return this.reduce(fraction_1);
+        }
+
+        sub(fraction_1, fraction_2) {
+            if (fraction_1 !== fraction_2) {
+                let comDenominator = fraction_1.denominator * fraction_2.denominator;
+                fraction_1.numerator *= fraction_2.denominator;
+                fraction_2.numerator *= fraction_1.denominator;
+                fraction_1.denominator = comDenominator;
+                fraction_2.denominator = comDenominator;
+            }
+            fraction_1.numerator -= fraction_2.numerator;
+            return this.reduce(fraction_1);
+        }
+
+        mul(fraction_1, fraction_2) {
+            fraction_1.numerator *= fraction_2.numerator;
+            fraction_1.denominator *= fraction_2.denominator;
+            return this.reduce(fraction_1);
+        }
+
+        div(fraction_1, fraction_2) {
+            fraction_1.numerator *= fraction_2.denominator;
+            fraction_1.denominator *= fraction_2.numerator;
+            return this.reduce(fraction_1);
+        }
+
+        reduce(obj) {
+            let limit = Math.min(obj.numerator, obj.denominator);
+            for (let i = obj.numerator; i > 1; i--) {
+                if (obj.numerator % i === 0 && obj.denominator % i === 0) {
+                    obj.numerator /= i;
+                    obj.denominator /= i;
+                }
+            }
+            return obj;
+        }
+    }
+</script>
+</body>
+</html>
